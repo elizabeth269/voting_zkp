@@ -11,3 +11,17 @@ impl ZeroKnowledgeProof {
         true
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_generate_and_verify_proof() {
+        let proof = ZeroKnowledgeProof::generate_proof("private_key", "vote");
+        assert_eq!(proof, "proof");
+
+        let result = ZeroKnowledgeProof::verify_proof("public_key", &proof);
+        assert!(result);
+    }
+}

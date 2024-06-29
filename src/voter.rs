@@ -24,3 +24,14 @@ impl Voter {
         }
     }
 }
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_voter_creation() {
+        let voter = Voter::new();
+        assert!(voter.public_key.n().bits() == 2048);
+        assert!(voter.private_key.n().bits() == 2048);
+    }
+}

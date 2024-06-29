@@ -55,3 +55,30 @@ impl Election {
         verified_votes
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::voter::Voter;
+
+    #[test]
+    fn test_register_voter() {
+        let mut election = Election::new();
+        let voter = Voter::new();
+        election.register_voter(voter.clone());
+        assert_eq!(election.voters.len(), 1);
+    }
+
+    #[test]
+    fn test_cast_and_verify_vote() {
+        let mut election = Election::new();
+        let voter = Voter::new();
+        election.register_voter(voter.clone());
+
+        election.cast_vote(&voter, "Candidate A".to_string());
+        let verified_votes = election.verify_votes();
+
+        assert_eq!(verified_votes.len(), 1);
+        assert_eq!(verified_votes.values().next().unwrap(), "Candidate A");
+    }
+}
