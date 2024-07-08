@@ -25,7 +25,7 @@ This project implements a simple voting system using Rust, incorporating basic c
 
 1. Clone the repository.
    ```sh
-   git clone https://github.com/yourusername/voting_system.git
+   git clone https://github.com/elizabeth269/voting_system.git
    cd voting_system
    ```
 2. Build the project.
